@@ -1,5 +1,5 @@
 class PublicController < ApplicationController
   def index
-  	@categorias = Categoria.all
+  	@productos = Producto.last 5
   end
 end
