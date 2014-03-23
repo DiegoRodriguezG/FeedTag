@@ -45,3 +45,5 @@ end
 gem 'debugger'
 
 gem 'mechanize'
+
+gem 'mysql'
