@@ -12,28 +12,28 @@ Necesitas (suponiendo que ya tienes RVM instalado):
 
 Clonamos el proyecto:
   
-  * <tt>git clone git@github.com:DiegoRodriguezG/FeedTag.git</tt>
+  * git clone git@github.com:DiegoRodriguezG/FeedTag.git
 
 
 Corremos las migraciones:
   
-  * <tt>rake db:migrate</tt>
+  * rake db:migrate
 
 
 Ahora, cuando ya las migraciones están listas, debemos ver las tareas rake para poblar las tablas (get_data, es el
 grupo de tareas rake que usaremos para traer los datos de otros sitios).
 
-  * <tt>rake -T | grep get_data</tt>
+  * rake -T | grep get_data
 
 Cuando nos despliege el grupo de tareas, debemos correr EN ORDEN las siguentes (pueden tomar algunos minutos, hay
 que tener paciencia):
 
-  * <tt>rake get_data:fetch_categories_fatsecret</tt>
-  * <tt>rake get_data:fetch_products_fatsecret</tt>
+  * rake get_data:fetch_categories_fatsecret
+  * rake get_data:fetch_products_fatsecret
 
 Ya, cuando estén pobladas las tablas, hacemos bundle:
 
-  * <tt>bundle</tt> xd
+  * bundle xd
 
 
 Estamos listos! podemos empezar a trabajar :D
