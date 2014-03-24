@@ -1,28 +1,41 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Para empezar a trabajar, necesitas tener tu entorno de desarrollo completo (bdd y rvm) y listo para trabajar.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Necesitas (suponiendo que ya tienes RVM instalado):
+
+  * Ruby version: ruby 1.9.3p125
+  
+  * Rails version: Rails 4.0.3
+  
+
+Clonamos el proyecto:
+  
+  * <tt>git clone git@github.com:DiegoRodriguezG/FeedTag.git</tt>
+
+
+Corremos las migraciones:
+  
+  * <tt>rake db:migrate</tt>
+
+
+Ahora, cuando ya las migraciones están listas, debemos ver las tareas rake para poblar las tablas (get_data, es el
+grupo de tareas rake que usaremos para traer los datos de otros sitios).
+
+  * <tt>rake -T | grep get_data</tt>
+
+Cuando nos despliege el grupo de tareas, debemos correr EN ORDEN las siguentes (pueden tomar algunos minutos, hay
+que tener paciencia):
+
+  * <tt>rake get_data:fetch_categories_fatsecret</tt>
+  * <tt>rake get_data:fetch_products_fatsecret</tt>
+
+Ya, cuando estén pobladas las tablas, hacemos bundle:
+
+  * <tt>bundle</tt> xd
+
+
+Estamos listos! podemos empezar a trabajar :D
+  
+
