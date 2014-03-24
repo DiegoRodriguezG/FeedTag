@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Feedtag::Application.routes.draw do
   root "public#index"
   get "public/index"
