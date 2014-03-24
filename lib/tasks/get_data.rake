@@ -41,13 +41,13 @@ namespace :get_data do
   	begin
   		categorias.each do |categoria|
   			categoria[0] = ''
-
+  			nombre_clave = categoria.gsub(/[[:space:]]/,'-').downcase.parameterize
   			cat = Categoria.find_by_nombre categoria
   			if cat == nil
-  				Categoria.create(:nombre => categoria)
+  				Categoria.create(:nombre => categoria, :nombre_clave => nombre_clave)
 					puts "categoria #{categoria} creada!"
   			else
-  				cat.update_attributes(:nombre => categoria)
+  				cat.update_attributes(:nombre => categoria, :nombre_clave => nombre_clave)
   				puts "categoria #{categoria} actualizada!"
   			end
 				
