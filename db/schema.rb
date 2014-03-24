@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140323202633) do
+ActiveRecord::Schema.define(version: 20140324003833) do
 
   create_table "categoria", force: true do |t|
     t.datetime "created_at"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20140323202633) do
     t.string   "grasa"
     t.string   "carbohidrato"
     t.string   "proteina"
+    t.string   "porcion"
   end
 
 end
