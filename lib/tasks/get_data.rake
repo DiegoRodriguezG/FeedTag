@@ -1,5 +1,6 @@
+# -*- encoding : utf-8 -*-
 namespace :get_data do
-	# encoding: utf-8 
+
   desc "fetch_categories pagina de nestle"
   task fetch_categories_nestle: :environment do
   	data = Mechanize.new
@@ -25,8 +26,6 @@ namespace :get_data do
 
   desc "fetch_categories fatsecret"
   task fetch_categories_fatsecret: :environment do
-  	#encoding: utf-8
-
   	data = Mechanize.new
   	rango = ("a".."z").to_a
 
@@ -42,8 +41,16 @@ namespace :get_data do
   	begin
   		categorias.each do |categoria|
   			categoria[0] = ''
-				Categoria.create(:nombre => categoria)
-				puts "categoria #{categoria} creada!"
+
+  			cat = Categoria.find_by_nombre categoria
+  			if cat == nil
+  				Categoria.create(:nombre => categoria)
+					puts "categoria #{categoria} creada!"
+  			else
+  				cat.update_attributes(:nombre => categoria)
+  				puts "categoria #{categoria} actualizada!"
+  			end
+				
 			end
   	rescue Exception => e
   		puts "ERROR!"
