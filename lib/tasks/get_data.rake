@@ -59,16 +59,40 @@ namespace :get_data do
 
   	begin
 	  	categorias.each do |categoria|
-	  		prod = []
+	  		productos = []
+	  		porciones = []
 
-	  		nombre = categoria.nombre.downcase
-	  		data.get("http://www.fatsecret.es/calor%C3%ADas-nutrici%C3%B3n/#{nombre.parameterize.gsub(/[[:space:]]/,'-')}")
-	  		prod << data.page.search(".prominent").map(&:text).map(&:strip)
+	  		nombre_categoria = categoria.nombre.parameterize.gsub(/[[:space:]]/,'-').downcase
+	  		data.get("http://www.fatsecret.es/calor%C3%ADas-nutrici%C3%B3n/#{nombre_categoria}")
+	  		productos = data.page.search(".prominent").map(&:text).map(&:strip)
+	  		porciones = data.page.search(".pale_blue").map(&:text).map(&:strip)
 
-	  		cat = Categoria.find_by_nombre nombre
+	  		cat = Categoria.find_by_nombre categoria.nombre
 
-	  		prod.flatten.each do |producto|
-	  			cat.productos << Producto.create(nombre: producto)
+	  		productos_porciones = Hash[productos.zip(porciones)]
+
+	  		productos_porciones.each do |producto,porcion|
+	  			nombre_clave = producto.gsub(/[[:space:]]/,'-').downcase.parameterize
+
+	  			if porcion[-1] == "g"
+	  				data.get("http://www.fatsecret.es/calor%C3%ADas-nutrici%C3%B3n/#{nombre_categoria}/#{nombre_clave}/100g")
+	  			else
+	  				data.get("http://www.fatsecret.es/calor%C3%ADas-nutrici%C3%B3n/#{nombre_categoria}/#{nombre_clave}/100ml")
+	  			end
+	  			
+	  			detalles = data.page.search(".details .generic .fact .factValue").map(&:text).map(&:strip)
+	  			descripcion = data.page.search(".details .generic td").map(&:text).map(&:strip)
+
+	  			cat.productos << Producto.create(
+	  				nombre: producto,
+	  				nombre_clave: nombre_clave,
+	  				caloria: detalles[0],
+	  				grasa: detalles[1],
+	  				carbohidrato: detalles[2],
+	  				proteina: detalles[3],
+	  				descripcion: descripcion[8],
+	  				porcion: porcion
+	  			)
 	  			puts "producto #{producto} con categoria #{cat.nombre} creado!"
 	  		end
 
