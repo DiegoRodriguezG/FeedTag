@@ -47,3 +47,5 @@ gem 'debugger'
 gem 'mechanize'
 
 gem 'mysql'
+
+gem 'mysql2'
