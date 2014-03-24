@@ -7,8 +7,8 @@ development:
   adapter: mysql2
   encoding: utf8
   database: feedtag_dev
-  username: root
-  password: 
+  username: feedtag
+  password: feedtag1234
   host: localhost
 
 # Warning: The database defined as "test" will be erased and

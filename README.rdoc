@@ -17,16 +17,26 @@ Clonamos el proyecto:
 
 Ya, cuando clonamos el proyecto, hacemos bundle:
 
-  * bundle xd
+  * bundle
 
+Se crea la base de datos en mysql:
 
-Corremos las migraciones:
+	* CREATE USER 'feedtag'@'localhost' IDENTIFIED BY 'feedtag1234';
+
+Luego se crea la base de datos:
+
+	* CREATE DATABASE IF NOT EXISTS `feedtag_dev` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`;
+
+Finalmente asignamos los permisos al usuario creado:
+	
+	* GRANT ALL PRIVILEGES ON feedtag_dev.* TO 'feedtag'@'localhost' IDENTIFIED BY 'feedtag1234';
+
+Después de tener nuestra base de datos, corremos las migraciones:
   
   * rake db:migrate
 
 
-Ahora, cuando ya las migraciones están listas, debemos ver las tareas rake para poblar las tablas (get_data, es el
-grupo de tareas rake que usaremos para traer los datos de otros sitios).
+Ahora, cuando ya las migraciones están listas, debemos ver las tareas rake para poblar las tablas (get_data, es el grupo de tareas rake que usaremos para traer los datos de otros sitios).
 
   * rake -T | grep get_data
 
