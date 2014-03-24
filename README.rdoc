@@ -5,7 +5,7 @@ Para empezar a trabajar, necesitas tener tu entorno de desarrollo completo (bdd 
 
 Necesitas (suponiendo que ya tienes RVM instalado):
 
-  * Ruby version: ruby 1.9.3p125
+  * Ruby version: ruby 2.1.1p76
   
   * Rails version: Rails 4.0.3
   
@@ -13,6 +13,11 @@ Necesitas (suponiendo que ya tienes RVM instalado):
 Clonamos el proyecto:
   
   * git clone git@github.com:DiegoRodriguezG/FeedTag.git
+
+
+Ya, cuando clonamos el proyecto, hacemos bundle:
+
+  * bundle xd
 
 
 Corremos las migraciones:
@@ -30,10 +35,6 @@ que tener paciencia):
 
   * rake get_data:fetch_categories_fatsecret
   * rake get_data:fetch_products_fatsecret
-
-Ya, cuando estén pobladas las tablas, hacemos bundle:
-
-  * bundle xd
 
 
 Estamos listos! podemos empezar a trabajar :D
