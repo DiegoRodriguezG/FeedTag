@@ -83,17 +83,34 @@ namespace :get_data do
 	  			detalles = data.page.search(".details .generic .fact .factValue").map(&:text).map(&:strip)
 	  			descripcion = data.page.search(".details .generic td").map(&:text).map(&:strip)
 
-	  			cat.productos << Producto.create(
-	  				nombre: producto,
-	  				nombre_clave: nombre_clave,
-	  				caloria: detalles[0],
-	  				grasa: detalles[1],
-	  				carbohidrato: detalles[2],
-	  				proteina: detalles[3],
-	  				descripcion: descripcion[8],
-	  				porcion: porcion
-	  			)
-	  			puts "producto #{producto} con categoria #{cat.nombre} creado!"
+	  			verificar_producto = Producto.find_by_nombre_clave nombre_clave
+
+	  			if verificar_producto == nil
+	  				cat.productos << Producto.create(
+		  				nombre: producto,
+		  				nombre_clave: nombre_clave,
+		  				caloria: detalles[0],
+		  				grasa: detalles[1],
+		  				carbohidrato: detalles[2],
+		  				proteina: detalles[3],
+		  				descripcion: descripcion[8],
+		  				porcion: porcion
+		  			)
+		  			puts "producto #{producto} con categoria #{cat.nombre} creado!"
+	  			else
+	  				verificar_producto.update_attributes(
+	  					nombre: producto,
+		  				nombre_clave: nombre_clave,
+		  				caloria: detalles[0],
+		  				grasa: detalles[1],
+		  				carbohidrato: detalles[2],
+		  				proteina: detalles[3],
+		  				descripcion: descripcion[8],
+		  				porcion: porcion
+		  			)
+		  			puts "producto #{verificar_producto.nombre_clave} con categoria #{cat.nombre} actualizado!"
+	  			end
+	  			
 	  		end
 
 	  	end
