@@ -2,6 +2,11 @@
 Feedtag::Application.routes.draw do
   root "public#index"
   get "public/index"
+
+  controller :public do
+    get "marca/:nombre_clave" => :ver_categoria
+    get "producto/:nombre_clave" => :ver_producto
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

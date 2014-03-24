@@ -1,0 +1,13 @@
+<h2>Marca</h2>
+
+<%= @categoria.nombre %>
+
+<h4>Productos de esta <%= @categoria.nombre %></h4>
+
+<br>
+<% @categoria_productos.each do |producto| %>
+	</br>
+	<%= link_to producto.nombre, action: :ver_producto, nombre_clave: producto.nombre_clave %>
+	<br>
+<% end %>
+<br>

@@ -1,8 +1,24 @@
 <h1>FeedTag</h1>
+
 <p>Informacion de Nutrición y Alimentos</p>
+<br>
+
+<h3>Marcas</h3>
+
+<br>
+<% @categorias.each do |categoria| %>
+	</br>
+	<%= link_to categoria.nombre, action: :ver_categoria, nombre_clave: categoria.nombre_clave %>
+	<br>
+<% end %>
+<br>
 
 <h3>Últimos Productos</h3>
 
+<br>
 <% @productos.each do |producto| %>
-	<h5><%= producto.nombre %></h5>
+	</br>
+	<%= link_to producto.nombre, action: :ver_producto, nombre_clave: producto.nombre_clave %>
+	<br>
 <% end %>
+<br>
