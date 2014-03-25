@@ -22,17 +22,17 @@ Ya, cuando clonamos el proyecto, hacemos bundle:
 
 Se crea la base de datos en mysql:
 
-	* CREATE USER 'feedtag'@'localhost' IDENTIFIED BY 'feedtag1234';
+  * CREATE USER 'feedtag'@'localhost' IDENTIFIED BY 'feedtag1234';
 
 
 Luego se crea la base de datos(sin el encoding):
 
-	* CREATE DATABASE `feedtag_dev`;
+  * CREATE DATABASE `feedtag_dev`;
 
 
 Finalmente asignamos los permisos al usuario creado:
 	
-	* GRANT ALL PRIVILEGES ON feedtag_dev.* TO 'feedtag'@'localhost' IDENTIFIED BY 'feedtag1234';
+  * GRANT ALL PRIVILEGES ON feedtag_dev.* TO 'feedtag'@'localhost' IDENTIFIED BY 'feedtag1234';
 
 
 Después de tener nuestra base de datos, corremos las migraciones:
