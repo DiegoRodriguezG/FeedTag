@@ -1,12 +1,11 @@
 # -*- encoding : utf-8 -*-
 Feedtag::Application.routes.draw do
   root "public#index"
-  get "public/index"
 
   controller :public do
+    get "productos_tokens" => :tokens
     get "marca/:nombre_clave" => :ver_categoria
     get "producto/:nombre_clave" => :ver_producto
-    post "busqueda_producto" => :busqueda_producto
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

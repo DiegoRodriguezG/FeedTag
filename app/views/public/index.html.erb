@@ -5,17 +5,33 @@
 
 		<div class="row">
 		  <div class="small-7 small-centered columns">
-		  	<%= form_tag busqueda_producto_path , method: :post, multipart: true do  %>
+		  	<%= form_tag root_path , method: :get, multipart: true do  %>
 				  <fieldset>
 				    <legend>Busca un producto</legend>
 					    <label>
-					    	<%= text_field_tag :producto , nil ,placeholder: "Escribe el nombre del producto" %>
+					    	<%= text_field_tag :productos , nil ,placeholder: "Escribe el nombre del producto", id: "token-input" %>
 					    	<%= submit_tag "Ir", class: "button postfix", name: nil %>
 					    </label>
 				  </fieldset>
 				<% end -%>
 		  </div>
 		</div>
+
+		<% if @productos_encontrados %>
+			<div class="row">
+			  <div class="small-12 columns">
+			  	<h2>Productos encontrados</h2>
+
+			  	<% @productos.each do |producto| %>
+						<br>
+						<br>
+						<%= link_to producto.nombre, action: :ver_producto, nombre_clave: producto.nombre_clave %>
+						<br>
+			  	<% end %>
+			  	<br>
+				</div>
+			</div>
+		<% end %>
 
 		<h3>Marcas</h3>
 
@@ -39,3 +55,9 @@
 
 	</div>
 </div>
+
+<script type="text/javascript">
+  $(function(){
+    Index.buscar();
+  });
+</script>
