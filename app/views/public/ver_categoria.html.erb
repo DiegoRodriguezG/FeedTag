@@ -1,11 +1,7 @@
 <div class="row">
   <div class="small-12 columns">
-		<h2>Marca</h2>
-
-		<%= @categoria.nombre %>
-
-		<h4>Productos de esta <%= @categoria.nombre %></h4>
-
+  	<h1>Marca </h1><h3><small>Productos de Marca <%= @categoria.nombre %></small></h3>
+		
 		<br>
 		<% @categoria_productos.each do |producto| %>
 			</br>
