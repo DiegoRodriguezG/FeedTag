@@ -1,8 +1,8 @@
 # -*- encoding : utf-8 -*-
 class PublicController < ApplicationController
   def index
-  	@categorias = Categoria.find(:all).sample(10)
-  	@productos = Producto.find(:all).sample(10)
+  	@categorias = Categoria.find(:all).sample(5)
+  	@productos = Producto.find(:all).sample(5)
   end
 
   def ver_categoria
@@ -14,5 +14,10 @@ class PublicController < ApplicationController
   def ver_producto
   	nombre_clave = params[:nombre_clave]
   	@producto = Producto.find_by_nombre_clave nombre_clave
+  end
+
+  def busqueda_producto
+  	producto = params[:producto]
+  	@productos = Producto.buscar(producto)
   end
 end
