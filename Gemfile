@@ -49,3 +49,5 @@ gem 'mechanize'
 gem 'mysql'
 
 gem 'mysql2'
+
+gem 'foundation-rails'
