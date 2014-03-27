@@ -7,6 +7,11 @@ Feedtag::Application.routes.draw do
     get "marca/:nombre_clave" => :ver_categoria
     get "producto/:nombre_clave" => :ver_producto
   end
+
+  controller :usuario do
+    get 'auth/:provider/callback' => :crear_session
+    get 'signout' => :eliminar_session
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
