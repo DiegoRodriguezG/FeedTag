@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324025520) do
+ActiveRecord::Schema.define(version: 20140326234650) do
 
   create_table "categoria", force: true do |t|
     t.datetime "created_at"
@@ -32,6 +32,14 @@ ActiveRecord::Schema.define(version: 20140324025520) do
     t.string   "carbohidrato"
     t.string   "proteina"
     t.string   "porcion"
+  end
+
+  create_table "usuarios", force: true do |t|
+    t.string "nombre"
+    t.string "oauth_token"
+    t.string "oauth_secret"
+    t.string "uid"
+    t.string "providers"
   end
 
 end
