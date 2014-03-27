@@ -2,11 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.cuadro_usuario{
-	color: white;
-	margin-top: 13px;
-	font-size: 13px;
-}
 .menu{
 	background-color: #088A29;
+	.cuadro_imagen_usuario{
+		padding-right: 10px;
+	}
+	.cuadro_usuario{
+		color: white;
+		margin-top: 13px;
+		font-size: 13px;
+	}
 }
