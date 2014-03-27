@@ -51,3 +51,7 @@ gem 'mysql'
 gem 'mysql2'
 
 gem 'foundation-rails'
+
+gem 'twitter'
+
+gem 'omniauth-twitter'
