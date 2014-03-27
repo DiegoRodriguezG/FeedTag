@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140326234650) do
+ActiveRecord::Schema.define(version: 20140327014841) do
 
   create_table "categoria", force: true do |t|
     t.datetime "created_at"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20140326234650) do
     t.string "oauth_secret"
     t.string "uid"
     t.string "providers"
+    t.string "imagen_perfil"
   end
 
 end
