@@ -17,6 +17,12 @@
             <h1><%= link_to "FeedTag", root_path %></h1>
           </li>
           <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+          <% if current_user %>
+            Hola! <%= current_user.nombre %>!
+            <%= link_to "Salir", signout_path %>
+          <% else %>
+            <%= link_to "Ingresa con Twitter", "/auth/twitter" %>
+          <% end %>
         </ul>
         <section class="top-bar-section">
           <ul class="right">
