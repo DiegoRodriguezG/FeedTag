@@ -17,18 +17,19 @@
             <h1><%= link_to "FeedTag", root_path %></h1>
           </li>
           <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-          <% if current_user %>
-            Hola! <%= current_user.nombre %>!
-            <%= link_to "Salir", signout_path %>
-          <% else %>
-            <%= link_to "Ingresa con Twitter", "/auth/twitter" %>
-          <% end %>
         </ul>
         <section class="top-bar-section">
           <ul class="right">
             <li>
               <%= link_to "Inicio", root_path %>
             </li>
+            <li class="divider"></li>
+            <% if current_user %>
+              <li class="cuadro_usuario">Hola! @<%= current_user.nombre %>!</li>
+              <li><%= link_to "Salir", signout_path %></li>
+            <% else %>
+              <li><%= link_to "Ingresa con Twitter", "/auth/twitter" %></li>
+            <% end %>
           </ul>
         </section>
       </nav>
